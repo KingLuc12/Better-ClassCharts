@@ -1,12 +1,16 @@
 {
-  "name": "school-overview",
-  "version": "1.0.0",
+  "name": "better-classcharts",
+  "version": "1.1.5",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "KingLuc",
+  "author": "KingLuc12",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kingluc12/better-classcharts.git"
+  },
   "license": "ISC",
   "dependencies": {
     "axios": "^1.8.4",

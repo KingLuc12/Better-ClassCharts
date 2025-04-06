@@ -70,9 +70,13 @@ document.addEventListener('DOMContentLoaded', function() {
             showLoading('attendance-loading', true);
             showLoading('achievements-loading', true);
             
-            // Update attendance data from already loaded full data
-            processAttendanceData(window.fullAttendanceData, startDate, endDate);
-            showLoading('attendance-loading', false);
+            // Added error catching to stop failing when attendance has already been deleted
+            try {
+                processAttendanceData(window.fullAttendanceData, startDate, endDate);
+                showLoading('attendance-loading', false);
+            } catch {
+                console.warn("Attendacnce date range update failed!")
+            }
             
             // Fetch new behavior data with proper date range
             fetchBehaviorData(startDate, endDate)
