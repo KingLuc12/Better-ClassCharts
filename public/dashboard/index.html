@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/dashboard/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="ClassCharts Dashboard Overview">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>ClassCharts - but better</h1>
+                <p class="tagline">Your ClassCharts, Made Better</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a class="active">Dashboard</a></li>
+                    <li><a href="/dashboard/attendance">Attendance</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <div class="user-info">
+                    <!-- This will be populated by JavaScript -->
+                </div>
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="date-filter-section">
+            <div class="container">
+                <div class="date-filter">
+                    <label for="time-range">Select Time Range:</label>
+                    <select id="time-range" class="time-range-select">
+                        <option value="since-august">Since August</option>
+                        <option value="this-month" selected>This Month</option>
+                        <option value="last-month">Last Month</option>
+                        <option value="this-week">This Week</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <div class="container">
+                <div class="grid-layout">
+                    <!-- Attendance Card (Top Right) -->
+                    <div class="dashboard-card" id="attendance-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-calendar-check"></i> <a href="/dashboard/attendance">Attendance</a></h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="loading" id="attendance-loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading attendance...
+                            </div>
+                            <div class="attendance-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Overall</span>
+                                    <span class="stat-value" id="overall-attendance">--</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Present</span>
+                                    <span class="stat-value" id="present-days">--</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Absent</span>
+                                    <span class="stat-value" id="absent-days">--</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Late</span>
+                                    <span class="stat-value" id="late-days">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement Points Card (Top Left) -->
+                    <div class="dashboard-card" id="achievements-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-medal"></i> Achievement Points</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="loading" id="achievements-loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading achievements...
+                            </div>
+                            <div class="achievement-stats">
+                                <div class="positive-points">
+                                    <div class="total-points">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span id="total-positive-points">--</span> Positive Points
+                                    </div>
+                                    <div class="points-breakdown" id="positive-breakdown">
+                                        <!-- Will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                                <div class="negative-points">
+                                    <div class="total-points">
+                                        <i class="fas fa-minus-circle"></i>
+                                        <span id="total-negative-points">--</span> Negative Points
+                                    </div>
+                                    <div class="points-breakdown" id="negative-breakdown">
+                                        <!-- Will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card" id="announcements-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="loading" id="announcements-loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading announcements...
+                            </div>
+                            <div class="announcement-controls">
+                                <button id="prev-announcement" class="announcement-nav-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div id="announcements-container">
+                                    <!-- Announcements will be populated by JavaScript -->
+                                </div>
+                                <button id="next-announcement" class="announcement-nav-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card disabled" id="timetable-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-calendar-day"></i> Today's Timetable</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="coming-soon">
+                                <i class="fas fa-tools"></i>
+                                <p>Coming soon...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ClassCharts - but better</h2>
+                    <p>By Students, For Students</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../home/index.html">Home</a></li>
+                            <li><a href="../dashboard/attendance/index.html">Attendance</a></li>
+                            <li><a href="#" class="active">Overview</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Created by students, for students. Not affiliated with ClassCharts or TES.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/dashboard/js/main.js"></script>
+</body>
+</html>

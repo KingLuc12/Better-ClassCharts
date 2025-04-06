@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassCharts - but better: Login</title>
+    <link rel="stylesheet" href="/login/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Log in to your enhanced ClassCharts experience">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>ClassCharts - but better</h1>
+                <p class="tagline">Your ClassCharts, Made Better</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/home#features">Features</a></li>
+                    <li><a href="/home#faq">FAQs</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <div class="login-container">
+                    <div class="login-header">
+                        <h2>Log In to ClassCharts</h2>
+                        <p>Enter your credentials to access your dashboard</p>
+                    </div>
+                    
+                    <div id="error-message" class="error-message" style="display: none;"></div>
+                    
+                    <form id="login-form" class="login-form">
+                        <div class="form-group">
+                            <label for="pupil-code">Pupil Code</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="pupil-code" name="pupilCode" required placeholder="Enter your pupil code">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date-of-birth">Date of Birth</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-calendar"></i>
+                                <input type="date" id="date-of-birth" name="dateOfBirth" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group remember-me">
+                            <input type="checkbox" id="remember-me" name="rememberMe">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Log In</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-circle-notch fa-spin"></i> Logging in...
+                            </span>
+                        </button>
+                    </form>
+                    
+                    <div class="login-footer">
+                        <p class="help-text">Need help logging in? Find your pupil code in the ClassCharts app or ask your school for assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ClassCharts - but better</h2>
+                    <p>By Students, For Students</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/home#features">Features</a></li>
+                            <li><a href="/home#faq">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Created by students, for students. Not affiliated with ClassCharts or TES.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/login/js/main.js"></script>
+</body>
+</html>

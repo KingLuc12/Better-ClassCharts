@@ -1,0 +1,858 @@
+:root {
+    /* Light Theme Variables */
+    --light-bg-primary: #f8f9fa;
+    --light-bg-secondary: #ffffff;
+    --light-text-primary: #212529;
+    --light-text-secondary: #6c757d;
+    --light-accent: #4361ee;
+    --light-accent-hover: #3a56d4;
+    --light-border: #dee2e6;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+    --light-card-bg: #ffffff;
+    
+    /* Status colors - Light */
+    --light-present: #28a745;
+    --light-absent: #dc3545;
+    --light-late: #ffc107;
+    --light-ignore: #6c757d;
+
+    /* Dark Theme Variables */
+    --dark-bg-primary: #121212;
+    --dark-bg-secondary: #1e1e1e;
+    --dark-text-primary: #f8f9fa;
+    --dark-text-secondary: #adb5bd;
+    --dark-accent: #4361ee;
+    --dark-accent-hover: #4f6ef2;
+    --dark-border: #343a40;
+    --dark-shadow: rgba(0, 0, 0, 0.3);
+    --dark-card-bg: #2a2a2a;
+    
+    /* Status colors - Dark */
+    --dark-present: #2ecc71;
+    --dark-absent: #e74c3c;
+    --dark-late: #f1c40f;
+    --dark-ignore: #95a5a6;
+
+    /* Font */
+    --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    /* Transitions */
+    --transition: 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    transition: all var(--transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Theme Specific Styles */
+body.light-theme {
+    background-color: var(--light-bg-primary);
+    color: var(--light-text-primary);
+}
+
+body.dark-theme {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+/* Light Theme */
+.light-theme {
+    --bg-primary: var(--light-bg-primary);
+    --bg-secondary: var(--light-bg-secondary);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --accent: var(--light-accent);
+    --accent-hover: var(--light-accent-hover);
+    --border: var(--light-border);
+    --shadow: var(--light-shadow);
+    --card-bg: var(--light-card-bg);
+    --present: var(--light-present);
+    --absent: var(--light-absent);
+    --late: var(--light-late);
+    --ignore: var(--light-ignore);
+}
+
+/* Dark Theme */
+.dark-theme {
+    --bg-primary: var(--dark-bg-primary);
+    --bg-secondary: var(--dark-bg-secondary);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --accent: var(--dark-accent);
+    --accent-hover: var(--dark-accent-hover);
+    --border: var(--dark-border);
+    --shadow: var(--dark-shadow);
+    --card-bg: var(--dark-card-bg);
+    --present: var(--dark-present);
+    --absent: var(--dark-absent);
+    --late: var(--dark-late);
+    --ignore: var(--dark-ignore);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 10px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color var(--transition);
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-primary);
+    font-weight: 500;
+    position: relative;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width var(--transition);
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 100%;
+}
+
+/* Theme Toggle Button */
+.theme-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    transition: background-color var(--transition);
+}
+
+.theme-toggle button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .theme-toggle button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fa-sun, .fa-moon {
+    font-size: 1.2rem;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.light-theme .fa-moon {
+    opacity: 0.5;
+}
+
+.dark-theme .fa-sun {
+    opacity: 0.5;
+}
+
+.fa-sun {
+    color: #f9ca24;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.dark-theme .fa-moon {
+    color: #f1c40f;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all var(--transition);
+    border: none;
+    cursor: pointer;
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-secondary);
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+.btn.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--accent), #6c5ce7);
+    color: white;
+}
+
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stats-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stats-card h3 {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-trend {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-trend.positive {
+    color: #2ecc71;
+}
+
+.stat-trend.negative {
+    color: #e74c3c;
+}
+
+.date-range {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+.date-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Section Styles */
+.attendance-section,
+.timetable-section {
+    padding: 3rem 0;
+}
+
+.attendance-section {
+    background-color: var(--bg-primary);
+}
+
+.timetable-section {
+    background-color: var(--bg-secondary);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    color: var(--text-primary);
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Attendance Charts */
+.attendance-charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.chart-container {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px var(--shadow);
+    height: 300px; /* Set fixed height */
+    position: relative; /* For proper canvas positioning */
+}
+
+.chart-container canvas {
+    max-height: 100%; /* Ensure canvas doesn't overflow */
+}
+
+.attendance-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.summary-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.summary-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.summary-card.present .summary-icon {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: var(--present);
+}
+
+.summary-card.absent .summary-icon {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: var(--absent);
+}
+
+.summary-card.late .summary-icon {
+    background-color: rgba(241, 196, 15, 0.1);
+    color: var(--late);
+}
+
+.summary-details h4 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Timetable Controls */
+.timetable-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.selected-date {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.view-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Timetable Views */
+.timetable-view {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Day View */
+.day-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.period-card {
+    display: grid;
+    grid-template-columns: 100px 1fr 120px;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    border-left: 4px solid var(--accent);
+}
+
+.period-time {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.period-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.period-location {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.period-status {
+    text-align: right;
+    font-weight: 600;
+}
+
+.status-present {
+    color: var(--present);
+}
+
+.status-absent {
+    color: var(--absent);
+}
+
+.status-late {
+    color: var(--late);
+}
+
+.status-ignore {
+    color: var(--ignore);
+}
+
+/* Week View */
+.week-view {
+    overflow-x: auto;
+}
+
+.week-timetable {
+    min-width: 900px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.week-timetable th,
+.week-timetable td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.week-timetable th {
+    background-color: var(--bg-primary);
+    position: sticky;
+    top: 0;
+}
+
+.period-cell {
+    min-height: 80px;
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.period-cell.has-class {
+    background-color: rgba(67, 97, 238, 0.1);
+}
+
+.period-cell .lesson-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.period-cell .room-name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-secondary);
+    padding: 3rem 0 1rem;
+    color: var(--text-primary);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.footer-logo {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo h2 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    display: flex;
+    flex: 2;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.link-group h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.link-group ul {
+    list-style: none;
+}
+
+.link-group li {
+    margin-bottom: 0.5rem;
+}
+
+.link-group a {
+    color: var(--text-secondary);
+}
+
+.link-group a:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .attendance-charts {
+        grid-template-columns: 1fr;
+    }
+    
+    .timetable-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logo {
+        text-align: center;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+    
+    .period-card {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .period-status {
+        text-align: left;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-links {
+        width: 100%;
+    }
+    
+    /* Adjust header sizes */
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    .tagline {
+        font-size: 0.8rem;
+    }
+    
+    /* Make the attendance summary cards more mobile-friendly */
+    .attendance-charts {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    /* Adjust stats card display */
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-card {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.8rem;
+    }
+}
+
+/* Additional tweaks for very small screens */
+@media (max-width: 480px) {
+    /* Further reduce header size */
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    /* Make things more compact */
+    .container {
+        padding: 0 10px;
+        width: 95%;
+    }
+    
+    /* Smaller chart height */
+    .chart-container {
+        height: 220px;
+        padding: 1rem;
+    }
+    
+    /* Adjust summary cards */
+    .summary-card {
+        padding: 1rem;
+    }
+    
+    .summary-details h4 {
+        font-size: 0.9rem;
+    }
+    
+    .summary-value {
+        font-size: 1.3rem;
+    }
+    
+    /* Make dashboard header more compact */
+    .dashboard-header {
+        padding: 1.5rem 0;
+    }
+    
+    /* Optimize date range selector */
+    .date-range-select {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Add this to your existing CSS file */
+
+.error-message {
+    background-color: var(--absent);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 4px 8px var(--shadow);
+    animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Add to your existing CSS file */
+
+.date-range-select {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    transition: all var(--transition);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+    padding-right: 35px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.date-range-select:hover, .date-range-select:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* For custom date range modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.modal-content h3 {
+    margin-bottom: 15px;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-inputs input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

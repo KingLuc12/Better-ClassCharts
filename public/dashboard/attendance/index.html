@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassCharts - but better</title>
+    <link rel="stylesheet" href="/dashboard/attendance/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="description" content="Attendance Overview Dashboard - Track your school attendance">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>ClassCharts - but better</h1>
+                <p class="tagline">Your ClassCharts, Made Better</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../home/index.html">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a class="active">Attendance</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard-header">
+            <div class="container">
+                <div class="dashboard-overview">
+                    <div class="stats-card">
+                        <h3>Overall Attendance</h3>
+                        <div class="stat-value" id="overall-attendance">95%</div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Since August</h3>
+                        <div class="stat-value" id="since-august">98%</div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Date Range</h3>
+                        <div class="date-range" id="date-range" data-start="" data-end="">
+                            Loading...
+                        </div>
+                        <div class="date-controls">
+                            <select id="date-range-select" class="date-range-select">
+                                <option value="since-august">Since August</option>
+                                <option value="this-month">This Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="attendance" class="attendance-section">
+            <div class="container">
+                <h2 class="section-title">Attendance Overview</h2>
+                
+                <div class="attendance-charts">
+                    <div class="chart-container">
+                        <h3>Attendance History</h3>
+                        <canvas id="attendance-chart"></canvas>
+                    </div>
+                    
+                    <div class="attendance-summary">
+                        <div class="summary-card present">
+                            <div class="summary-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h4>Present</h4>
+                                <div class="summary-value" id="present-count">28 days</div>
+                            </div>
+                        </div>
+                        <div class="summary-card absent">
+                            <div class="summary-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h4>Absent</h4>
+                                <div class="summary-value" id="absent-count">1 day</div>
+                            </div>
+                        </div>
+                        <div class="summary-card late">
+                            <div class="summary-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h4>Late</h4>
+                                <div class="summary-value" id="late-count">0 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ClassCharts - but better</h2>
+                    <p>By Students, For Students</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../home/index.html">Home</a></li>
+                            <li><a href="#attendance">Attendance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Created by students, for students. Not affiliated with ClassCharts or TES.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/dashboard/attendance/js/main.js"></script>
+</body>
+</html>
