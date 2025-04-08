@@ -7,7 +7,7 @@ Better ClassCharts is a simple Web UI and proxy server to interact with the Clas
 ## 🖥️) Live Website
 **❗KEEP IN MIND:** If you are using someone elses hosted version of Better ClassCharts, they may store your information.
 
-[Better ClassCharts - Website](https://betterclass.kingluc.my.id/) - This is our host and it uses the exact same code as in this repository.
+[Better ClassCharts - Website](https://better-classcharts.kingluc.my.id/) - This is our host and it uses the exact same code as in this repository.
 ## 🌐) Deployment
 
 🚢 - To deploy this project, first pull the source code:
